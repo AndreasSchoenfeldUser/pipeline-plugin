@@ -8,8 +8,17 @@ pipeline {
       }
     }
     stage('test') {
-      steps {
-        sleep 10
+      parallel {
+        stage('test') {
+          steps {
+            sleep 10
+          }
+        }
+        stage('test2') {
+          steps {
+            echo 'hello test 2'
+          }
+        }
       }
     }
   }
